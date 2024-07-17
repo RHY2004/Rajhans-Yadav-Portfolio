@@ -1,0 +1,621 @@
+@media (max-width: 768px) {
+    /* Styles for smaller screens (tablets and smartphones) */
+    
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container { 
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: justify;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #0073e6;
+    height: 50px; /* Increased height for better visibility */
+    text-align: center;
+    position: relative; /* Ensure position context for pseudo-element */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block; /* Display items horizontally */
+    margin: 0 10px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fafbfd;
+    font-weight: bold;
+    padding: 15px 20px; /* Padding for better clickable area */
+    display: block;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+    color: #ff6600; /* Change color on hover */
+}
+
+/* Indicator for Active Link */
+nav ul li::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px; /* Height of the indicator */
+    background-color: #ff6600; /* Color of the indicator */
+    position: absolute;
+    bottom: -5px; /* Position below the link */
+    left: 50%; /* Centered horizontally */
+    transform: translateX(-50%);
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+nav ul li.active::after,
+nav ul li a:hover::after {
+    width: 100%; /* Expand indicator width on hover or when link is active */
+}
+
+
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: #0073e6;
+        opacity: 0; /* Hide initially */
+        visibility: hidden; /* Hide initially */
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    nav ul.open {
+        opacity: 1; /* Show when open */
+        visibility: visible; /* Show when open */
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        padding: 10px 0;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        display: none; /* Hidden by default */
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #fafbfd;
+        margin: 5px auto;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu-toggle.open .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+section h2 {
+    color: #0073e6;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    border-top: 2px solid #ddd;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+footer p {
+    color: #777;
+    font-size: 0.9em;
+}
+
+.project, .club-details {
+    margin-bottom: 20px;
+}
+
+.project h3, .club-details h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.project p, .club-details p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+.media img, .media video {
+    max-width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.media video {
+    display: block;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+}
+
+.profile-photo {
+    max-width: 150px;
+    margin-right: 20px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+/* Carousel Styles */
+.carousel {
+    overflow: hidden;
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+
+.carousel-track-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.carousel-slide {
+    min-width: 200px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%; /* Set the height you want for all images */
+    object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+    transform: scale(1.2);
+}
+
+/* Certification Section Styles */
+#certifications {
+    margin-bottom: 30px;
+}
+
+.certification-list {
+    list-style: none;
+    padding: 0;
+}
+
+.certification-list li {
+    margin-bottom: 20px;
+}
+
+.certification-list h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.certification-list p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px; /* Adjust the height as needed */
+    background-color: #0073e6; /* Adjust the color as needed */
+    z-index: 1000;
+    transition: width 0.25s ease-out; /* Smooth transition effect */
+}
+
+#contact i {
+    color: #0073e6; /* Set the color for the icons */
+    margin-right: 10px; /* Add some space between icon and text */
+    font-size: 1.2em; /* Adjust the size of the icons */
+}
+
+#contact a {
+    color: #0073e6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: #ff6600;
+}
+}
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container { 
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #0073e6;
+    height: 50px; /* Increased height for better visibility */
+    text-align: center;
+    position: relative; /* Ensure position context for pseudo-element */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block; /* Display items horizontally */
+    margin: 0 10px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fafbfd;
+    font-weight: bold;
+    padding: 15px 20px; /* Padding for better clickable area */
+    display: block;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+    color: #ff6600; /* Change color on hover */
+}
+
+/* Indicator for Active Link */
+nav ul li::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px; /* Height of the indicator */
+    background-color: #ff6600; /* Color of the indicator */
+    position: absolute;
+    bottom: -5px; /* Position below the link */
+    left: 50%; /* Centered horizontally */
+    transform: translateX(-50%);
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+nav ul li.active::after,
+nav ul li a:hover::after {
+    width: 100%; /* Expand indicator width on hover or when link is active */
+}
+
+
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: #0073e6;
+        opacity: 0; /* Hide initially */
+        visibility: hidden; /* Hide initially */
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    nav ul.open {
+        opacity: 1; /* Show when open */
+        visibility: visible; /* Show when open */
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        padding: 10px 0;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        display: none; /* Hidden by default */
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #fafbfd;
+        margin: 5px auto;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu-toggle.open .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+section h2 {
+    color: #0073e6;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.2em;
+    color: #555;
+    text-align: justify;/* to aline paragraph text*/
+}
+
+footer {
+    text-align: center;
+    border-top: 2px solid #ddd;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+footer p {
+    color: #777;
+    font-size: 0.9em;
+}
+
+.project, .club-details {
+    margin-bottom: 20px;
+}
+
+.project h3, .club-details h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.project p, .club-details p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+.media img, .media video {
+    max-width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.media video {
+    display: block;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+}
+
+.profile-photo {
+    max-width: 180px;
+    margin-right: 20px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+/* Carousel Styles */
+.carousel {
+    overflow: hidden;
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+
+.carousel-track-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.carousel-slide {
+    min-width: 200px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%; /* Set the height you want for all images */
+    object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+    transform: scale(1.2);
+}
+
+/* Certification Section Styles */
+#certifications {
+    margin-bottom: 30px;
+}
+
+.certification-list {
+    list-style: none;
+    padding: 0;
+}
+
+.certification-list li {
+    margin-bottom: 20px;
+}
+
+.certification-list h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.certification-list p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px; /* Adjust the height as needed */
+    background-color: #0073e6; /* Adjust the color as needed */
+    z-index: 1000;
+    transition: width 0.25s ease-out; /* Smooth transition effect */
+}
+
+#contact i {
+    color: #0073e6; /* Set the color for the icons */
+    margin-right: 10px; /* Add some space between icon and text */
+    font-size: 1.2em; /* Adjust the size of the icons */
+}
+
+#contact a {
+    color: #0073e6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: #ff6600;
+}
